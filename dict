@@ -1,0 +1,11 @@
+package gkRMI;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface Dict extends Remote {
+	public String searchWord(String str) throws RemoteException;
+	public String insertWord(String word, String mean)  throws RemoteException;
+	public String updateWord(String word, String mean) throws RemoteException;
+	public String deleteWord(String str) throws RemoteException;
+}
