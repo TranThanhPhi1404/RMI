@@ -1,0 +1,30 @@
+package gkRMI;
+
+
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+
+
+
+public class ServerRMI {
+	public static void main(String[] args) {
+		try {
+			LocateRegistry.createRegistry(3333);
+			Naming.rebind("rmi://localhost:3333/Dict", new DictImPL());
+			
+			System.out.println("Server is running!");
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+}
