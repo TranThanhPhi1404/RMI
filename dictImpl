@@ -1,0 +1,125 @@
+package gkRMI;
+
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DictImPL extends UnicastRemoteObject implements Dict {
+
+
+	public DictImPL() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String searchWord(String str) throws RemoteException {
+		String result = null;
+		try {	
+			Connection con = JDBC.getConnection();
+			Statement st = con.createStatement();
+			
+			String sql ="Select *from data where vocabulary ='"+str+"'";
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				result=rs.getString("mean");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(result !=null)
+			return result;
+		
+		
+		return "Không tìm thấy";
+	}
+
+	@Override
+	public String insertWord(String word, String mean) throws RemoteException {
+		
+		int temp=0;
+		try {	
+			Connection con = JDBC.getConnection();
+			Statement st = con.createStatement();
+			
+			String sql ="insert into data(vocabulary,mean) values('"+word+"','"+mean+"')";
+			System.out.println(sql);
+			temp = st.executeUpdate(sql);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		if(temp >0 )
+			return "Đã thêm";
+		return "Lỗi......";
+	}
+
+	@Override
+	public String updateWord(String word, String mean) throws RemoteException {
+		String result = null;
+		int temp=0;
+		try {	
+			Connection con = JDBC.getConnection();
+			Statement st = con.createStatement();
+			
+			String sql ="update data set mean='"+mean+"' where vocabulary='"+word+"'" ;
+			
+			temp = st.executeUpdate(sql);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+		
+		
+		if(temp >0 )
+			return "Đã sửa xong";
+		return "Không tìm thấy ";
+	}
+
+	@Override
+	public String deleteWord(String str) throws RemoteException {
+		int temp=0;
+		try {	
+			Connection con = JDBC.getConnection();
+			Statement st = con.createStatement();
+			
+			String sql ="delete from data where vocabulary='"+str+"'  ";
+			System.out.println(sql);
+			temp = st.executeUpdate(sql);
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		if(temp >0 )
+			return "Đã xóa";
+		return "Lỗi......";
+	}
+	
+	
+	public static void main(String[] args) {
+		try {
+			DictImPL test = new DictImPL();
+			System.out.println(test.searchWord("appledsad"));
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+}
