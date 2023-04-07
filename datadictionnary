@@ -1,0 +1,153 @@
+
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+
+
+CREATE TABLE `data` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `vocabulary` varchar(50) NOT NULL DEFAULT '',
+  `mean` varchar(512) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO `data` (`id`, `vocabulary`, `mean`) VALUES
+(1, 'apple', 'quả táo'),
+(3, 'happy', 'hạnh phúc, vui vẻ'),
+(4, 'trend', 'xu hướng'),
+(5, 'beautiful', 'Xinh đẹp, đẹp'),
+(6, 'allocate', 'Phân phối'),
+(7, 'application', 'Ứng dụng'),
+(8, 'alphanumeric', 'Dữ liệu chữ số'),
+(9, 'bubble', 'Bộ nhớ bọt'),
+(10, 'binary', 'Nhị phân, thuộc về nhị phân'),
+(11, 'breach', 'lỗ hổng dữ liệu'),
+(12, 'convert', 'Chuyển đổi'),
+(13, 'computer', 'máy tính'),
+(14, 'computerized', 'Tin học hóa'),
+(15, 'device', 'Thiết bị'),
+(16, 'decision', ' Quyết định'),
+(17, 'division', 'Phép chia'),
+(18, 'computer', 'Lập trình viên'),
+(19, 'software', 'Lập trình viên phần mềm'),
+(20, 'data', 'Nhà khoa học dữ liệu'),
+(21, 'computer', 'Nhà khoa học máy tính'),
+(22, 'computer', 'Nhà phân tích máy tính'),
+(23, 'graphics', 'đồ họa'),
+(24, 'chain', 'Chuỗi'),
+(25, 'configuration', 'Cấu hình'),
+(26, 'day', 'ngày'),
+(27, 'idea', 'ý tưởng'),
+(28, 'life', 'cuộc sống'),
+(29, 'place', 'nơi chốn'),
+(30, 'work', 'nơi làm việc'),
+(31, 'thing', 'đồ vật, điều, sự, thứ không thể gọi tên'),
+(32, 'week', 'tuần'),
+(33, 'man', 'đàn ông'),
+(34, 'woman', 'phụ nữ'),
+(35, 'time', 'thời gian'),
+(36, 'year', 'năm'),
+(37, 'furure', 'tương lai'),
+(38, 'number', 'con số'),
+(39, 'company', 'công ty'),
+(40, 'pleasure', 'niềm vinh hạnh'),
+(41, 'problem', 'vấn đề'),
+(42, 'way', 'đường đi, cách đi'),
+(43, 'question', 'câu hỏi'),
+(44, 'part', 'một phần'),
+(45, 'message', 'lời nhắn'),
+(46, 'be', 'là, được'),
+(47, 'have', 'có'),
+(48, 'do', 'làm'),
+(49, 'say', 'nói'),
+(50, 'give', 'cho'),
+(51, 'use', 'sử dụng'),
+(52, 'find', 'tìm, kiếm'),
+(53, 'tell', 'nói'),
+(54, 'ask', 'hỏi'),
+(55, 'seem', 'dường như'),
+(56, 'feel', 'cảm thấy'),
+(57, 'try', 'thử, cố gắng'),
+(58, 'leave', 'rời đi'),
+(59, 'make', 'làm'),
+(60, 'go', 'đi'),
+(61, 'know', 'biết'),
+(62, 'take', 'dẫn, lấy'),
+(63, 'see', 'nhìn thấy'),
+(64, 'come', 'đến'),
+(65, 'think', 'nghĩ'),
+(66, 'look', 'nhìn'),
+(67, 'want', 'muốn'),
+(68, 'call', 'gọi'),
+(69, 'good', 'tốt'),
+(70, 'new', 'mới'),
+(71, 'first', 'đầu tiên'),
+(72, 'last', 'trước, cuối cùng'),
+(73, 'long', 'dài'),
+(74, 'great', 'tốt, lớn'),
+(75, 'little', 'nhỏ'),
+(76, 'own', 'của riêng mình'),
+(77, 'other', 'khác'),
+(78, 'old', 'cũ, già'),
+(79, 'right', 'chính xác'),
+(80, 'big', 'to, lớn'),
+(81, 'high', 'cao'),
+(82, 'diffrent', 'khác nhau'),
+(83, 'small', 'nhỏ'),
+(84, 'large', 'rộng lớn'),
+(85, 'next', 'tiếp theo'),
+(86, 'early', 'sớm'),
+(87, 'young', 'trẻ'),
+(88, 'important', 'quan trọng'),
+(89, 'public', 'công cộng'),
+(90, 'bad', 'xấu'),
+(91, 'same', 'giống nhau'),
+(92, 'able', 'có thể'),
+(93, 'few', 'một vài'),
+(94, 'also', 'cũng'),
+(95, 'as', 'như'),
+(96, 'here', 'ở đây'),
+(97, 'no', 'không'),
+(98, 'not', 'không là'),
+(99, 'now', 'bây giờ'),
+(100, 'out', 'ra ngoài'),
+(101, 'so', 'vì vậy'),
+(102, 'then', 'sau đó'),
+(103, 'there', 'ở đó'),
+(104, 'very', 'rất'),
+(105, 'always', 'luôn luôn'),
+(106, 'never', 'không bao giờ'),
+(107, 'to', 'đến'),
+(108, 'of', 'của'),
+(109, 'in', 'trong'),
+(110, 'for', 'cho, trong'),
+(111, 'on', 'vào, trên'),
+(112, 'with', 'với'),
+(113, 'at', 'tại'),
+(114, 'by', 'bằng'),
+(115, 'from', 'từ'),
+(116, 'about', 'khoảng, về'),
+(117, 'into', 'ở trong'),
+(118, 'over', 'qua'),
+(119, 'after', 'sau khi');
+
+
+ALTER TABLE `data`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `data`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
