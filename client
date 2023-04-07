@@ -1,0 +1,69 @@
+package gkRMI;
+
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.util.Scanner;
+
+
+
+public class ClientRMI {
+	public static void main(String[] args) {
+		try {
+			LocateRegistry.getRegistry();
+			Dict remote = (Dict) Naming.lookup("rmi://localhost:3333/Dict");
+			
+			System.out.println("Chọn hàm:");
+			System.out.println("1. tìm");
+			System.out.println("2. Thêm");
+			System.out.println("3. Xóa ");
+			System.out.println("4. Sửa");
+			
+			int temp = new Scanner(System.in).nextInt();
+			
+			if(temp==1) {
+				System.out.println("nhập từ để tìm");
+				String search = new Scanner(System.in).nextLine();	
+				System.out.println(remote.searchWord(search));
+			}
+			else if(temp==2) {
+				System.out.println("nhập từ");
+				String search1 = new Scanner(System.in).nextLine();	
+				System.out.println("nhập nghĩa: ");
+				String search2 = new Scanner(System.in).nextLine();	
+				
+				System.out.println(remote.insertWord(search1, search2));	
+			}
+			else if(temp==3) {
+				System.out.println("nhập từ để xóa");
+				String search = new Scanner(System.in).nextLine();	
+				System.out.println(remote.deleteWord(search));
+			}
+			else {
+				System.out.println("nhập từ");
+				String search1 = new Scanner(System.in).nextLine();	
+				System.out.println("nhập nghĩa: ");
+				String search2 = new Scanner(System.in).nextLine();	
+				System.out.println(remote.updateWord(search1, search2));
+			}
+			
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+}
